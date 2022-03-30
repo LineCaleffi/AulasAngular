@@ -9,6 +9,7 @@ import { NovoComponenteComponent } from './novo-componente/novo-componente.compo
 
 import { ComponenteFilhoComponent } from './componente-filho/componente-filho.component';
 import { QuartoComponent } from './quarto/quarto.component';
+import { DiretivasComponent } from './diretivas/diretivas.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { QuartoComponent } from './quarto/quarto.component';
     TerceiroComponent,
     NovoComponenteComponent,
     ComponenteFilhoComponent,
-    QuartoComponent
+    QuartoComponent,
+    DiretivasComponent
   ],
   imports: [
     BrowserModule

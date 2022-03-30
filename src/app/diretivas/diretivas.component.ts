@@ -1,0 +1,66 @@
+// ngSwtich -> é uma diretiva que exibe um elemento de um possivel conjunto de elementos com base em alguma condição
+// ngIf -> é uma diretiva Angular que permite alterar a página a partir de uma declaração condicional
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+    selector: 'app-diretivas',
+  template: `
+    <h2 *ngIf="aparece">esse texto pode aparecer ou não</h2> <!--  Aparece o texto ou não após clicar no botão   -->
+    <button (click)="aparece = !aparece">
+      {{ aparece ? 'OCULTAR O TEXTO' : 'MOSTRAR O TEXTO' }} <!--Se o botão estiver escrito 'ocultar texto' ao clicar o texto some, após o botão muda pra 'mostrar' -->
+    </button>                                               <!-- ao clicar no botão o texto aparece novamente -->
+    <div [ngSwitch]="estacao">
+      <div *ngSwitchCase="'verao'">Verão</div>
+      <div *ngSwitchCase="'outono'">Outuno</div>
+      <div *ngSwitchCase="'inverno'">Inverno</div>
+      <div *ngSwitchCase="'primavera'">Primavera</div>
+    </div>
+    <ul>
+      <li *ngFor="let pokemon of pokemons; odd as jeremias">
+        <p [style.color]="jeremias? 'green' : 'red'">
+          {{ pokemon.nome }}, {{ pokemon.tipo }}
+        </p>
+      </li>
+    </ul>
+  `,
+})
+export class DiretivasComponent {
+  public pokemons: any[] = [
+    {
+      nome: 'Alakazam',
+      level: 10,
+      tipo: 'psiquico',
+      moveset: ['psych', 'confusion ray'],
+    },
+    {
+      nome: 'raichu',
+      tipo: 'eletrico',
+      level: 20,
+      moveset: ['thunder', 'tail whip', 'thunder wave'],
+    },
+    {
+      nome: 'Psyduck',
+      tipo: 'Aquático/Psiquico',
+      level: 12,
+      moveset: ['tackle', 'confusion ray'],
+    },
+    {
+      nome: 'venossaur',
+      tipo: 'Grama',
+      level: 42,
+      moveset: ['razor leaf'],
+    },
+    {
+      nome: 'vulpix',
+      tipo: 'fogo',
+      level: 23,
+      moveset: ['ember', 'tail whip', 'tackle'],
+    },
+  ];
+  public estacao: string = 'outono';
+  public aparece: boolean = true; // mostra verdadeiro ou falso
+}
+
+
+
