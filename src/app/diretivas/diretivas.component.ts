@@ -2,6 +2,8 @@
 // ngIf -> é uma diretiva Angular que permite alterar a página a partir de uma declaração condicional
 
 import { Component, OnInit } from '@angular/core';
+import { HarryPotterInterface } from '../hp.interface';
+import { PokemonInterface } from '../pokemon.interface';
 
 @Component({
     selector: 'app-diretivas',
@@ -26,40 +28,40 @@ import { Component, OnInit } from '@angular/core';
   `,
 })
 export class DiretivasComponent {
-  public pokemons: any[] = [
-    {
-      nome: 'Alakazam',
-      level: 10,
-      tipo: 'psiquico',
-      moveset: ['psych', 'confusion ray'],
-    },
-    {
-      nome: 'raichu',
-      tipo: 'eletrico',
-      level: 20,
-      moveset: ['thunder', 'tail whip', 'thunder wave'],
-    },
-    {
-      nome: 'Psyduck',
-      tipo: 'Aquático/Psiquico',
-      level: 12,
-      moveset: ['tackle', 'confusion ray'],
-    },
-    {
-      nome: 'venossaur',
-      tipo: 'Grama',
-      level: 42,
-      moveset: ['razor leaf'],
-    },
-    {
-      nome: 'vulpix',
-      tipo: 'fogo',
-      level: 23,
-      moveset: ['ember', 'tail whip', 'tackle'],
-    },
-  ];
-  public estacao: string = 'outono';
-  public aparece: boolean = true; // mostra verdadeiro ou falso
+    public pokemons: PokemonInterface[] = [
+        {
+        nome: 'Alakazam',
+        level: 10,
+        tipo: 'psiquico',
+        moveset: ['psych', 'confusion ray'],
+        },
+        {
+        nome: 'raichu',
+        tipo: 'eletrico',
+        level: 20,
+        moveset: ['thunder', 'tail whip', 'thunder wave'],
+        },
+        {
+        nome: 'Psyduck',
+        tipo: 'Aquático/Psiquico',
+        level: 12,
+        moveset: ['tackle', 'confusion ray'],
+        },
+        {
+        nome: 'venossaur',
+        tipo: 'Grama',
+        level: 42,
+        moveset: ['razor leaf'],
+        },
+        {
+        nome: 'vulpix',
+        tipo: 'fogo',
+        level: 23,
+        moveset: ['ember', 'tail whip', 'tackle'],
+        },
+    ];
+    public estacao: string = 'outono';
+    public aparece: boolean = true; // mostra verdadeiro ou falso
 }
 
 
