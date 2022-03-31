@@ -11,6 +11,7 @@ import { ComponenteFilhoComponent } from './componente-filho/componente-filho.co
 import { QuartoComponent } from './quarto/quarto.component';
 import { DiretivasComponent } from './diretivas/diretivas.component';
 import { HpComponent } from './exercicioHP/hp.component';
+import { MostraPokemonComponent } from './mostra-pokemon/mostra-pokemon.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { HpComponent } from './exercicioHP/hp.component';
     ComponenteFilhoComponent,
     QuartoComponent,
     DiretivasComponent,
-    HpComponent
+    HpComponent,
+    MostraPokemonComponent
   ],
   imports: [
     BrowserModule
