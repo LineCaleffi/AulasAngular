@@ -1,68 +1,75 @@
-// ngSwtich -> é uma diretiva que exibe um elemento de um possivel conjunto de elementos com base em alguma condição
-// ngIf -> é uma diretiva Angular que permite alterar a página a partir de uma declaração condicional
-
-import { Component, OnInit } from '@angular/core';
-import { HarryPotterInterface } from '../hp.interface';
-import { PokemonInterface } from '../pokemon.interface';
+import { Component } from '@angular/core';
+import { PokemonInterface, tiposPokemon } from '../pokemon.interface';
+//TODO 1. Criem um vetor de objetos, sendo que os objetos desse vetor simblizam algo que você gosta
+//TODO 2. Crie uma interface para tipar esse array de objetos
+//TODO 3. Crie uma diretiva ngFor no template que liste cada propriedade desses objetos
+//TODO DESAFIO Crie um Input number que o usu+ario escolhe o número máximo de objetos na tela
 
 @Component({
-    selector: 'app-diretivas',
+  selector: 'app-diretivas',
   template: `
-    <h2 *ngIf="aparece">esse texto pode aparecer ou não</h2> <!--  Aparece o texto ou não após clicar no botão   -->
-    <button (click)="aparece = !aparece">
-      {{ aparece ? 'OCULTAR O TEXTO' : 'MOSTRAR O TEXTO' }} <!--Se o botão estiver escrito 'ocultar texto' ao clicar o texto some, após o botão muda pra 'mostrar' -->
-    </button>                                               <!-- ao clicar no botão o texto aparece novamente -->
-    <div [ngSwitch]="estacao">
-      <div *ngSwitchCase="'verao'">Verão</div>
-      <div *ngSwitchCase="'outono'">Outuno</div>
-      <div *ngSwitchCase="'inverno'">Inverno</div>
-      <div *ngSwitchCase="'primavera'">Primavera</div>
-    </div>
+    <input
+      type="number"
+      #campoNumero
+      (input)="numMaxPokemons = +campoNumero.value - 1"
+      [value]="pokemons.length"
+      [max]="pokemons.length"
+      min="0"
+    />
     <ul>
-      <li *ngFor="let pokemon of pokemons; odd as jeremias">
-        <p [style.color]="jeremias? 'green' : 'red'">
-          {{ pokemon.nome }}, {{ pokemon.tipo }}
-        </p>
-      </li>
+      <div *ngFor="let pokemon of pokemons; index as indice">
+        <li *ngIf="indice <= numMaxPokemons">
+          <p>
+            {{ pokemon.nome }}, {{ pokemon.tipo }}, level: {{ pokemon.level }}
+          </p>
+        </li>
+      </div>
     </ul>
   `,
 })
 export class DiretivasComponent {
-    public pokemons: PokemonInterface[] = [
-        {
+  public numMaxPokemons: number;
+  public pokemons: PokemonInterface[];
+
+  constructor() {
+    this.pokemons = [
+      {
         nome: 'Alakazam',
         level: 10,
-        tipo: 'psiquico',
+        tipo: tiposPokemon.Psychic,
         moveset: ['psych', 'confusion ray'],
-        },
-        {
+      },
+      {
         nome: 'raichu',
-        tipo: 'eletrico',
+        tipo: tiposPokemon.Electric,
         level: 20,
         moveset: ['thunder', 'tail whip', 'thunder wave'],
-        },
-        {
+      },
+      {
         nome: 'Psyduck',
-        tipo: 'Aquático/Psiquico',
+        tipo: tiposPokemon.Water,
         level: 12,
         moveset: ['tackle', 'confusion ray'],
-        },
-        {
+      },
+      {
         nome: 'venossaur',
-        tipo: 'Grama',
+        tipo: tiposPokemon.Grass,
         level: 42,
         moveset: ['razor leaf'],
-        },
-        {
+      },
+      {
         nome: 'vulpix',
-        tipo: 'fogo',
+        tipo: tiposPokemon.Fire,
         level: 23,
         moveset: ['ember', 'tail whip', 'tackle'],
-        },
+      },
+      {
+        nome: 'pikachu',
+        level: 72,
+        tipo: tiposPokemon.Electric,
+        moveset: ['thunder', 'tail whip', 'tackle'],
+      },
     ];
-    public estacao: string = 'outono';
-    public aparece: boolean = true; // mostra verdadeiro ou falso
+    this.numMaxPokemons = this.pokemons.length;
+  }
 }
-
-
-

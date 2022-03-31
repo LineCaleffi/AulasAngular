@@ -10,7 +10,7 @@ import { NovoComponenteComponent } from './novo-componente/novo-componente.compo
 import { ComponenteFilhoComponent } from './componente-filho/componente-filho.component';
 import { QuartoComponent } from './quarto/quarto.component';
 import { DiretivasComponent } from './diretivas/diretivas.component';
-
+import { HpComponent } from './exercicioHP/hp.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,8 @@ import { DiretivasComponent } from './diretivas/diretivas.component';
     NovoComponenteComponent,
     ComponenteFilhoComponent,
     QuartoComponent,
-    DiretivasComponent
+    DiretivasComponent,
+    HpComponent
   ],
   imports: [
     BrowserModule
